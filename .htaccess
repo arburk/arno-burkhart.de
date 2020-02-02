@@ -1,0 +1,9 @@
+AddDefaultCharset UTF-8  
+
+<ifModule mod_headers.c>
+	# X-Frame-Options to avoid Clickjacking
+	Header always append X-Frame-Options SAMEORIGIN
+	Header set Referrer-Policy "no-referrer"
+	Header set Cache-Control "max-age=300, public"
+	Header always set X-Content-Type-Options "nosniff"
+</ifModule>
