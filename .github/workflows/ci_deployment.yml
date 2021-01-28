@@ -12,10 +12,14 @@ jobs:
       steps:
       - uses: actions/checkout@master
       - name: FTP-Deploy-Action
-        uses: SamKirkland/FTP-Deploy-Action@2.0.0
-        env:
-          FTP_SERVER: ${{ secrets.ftp_server }}
-          FTP_USERNAME: ${{ secrets.ftp_user }}
-          FTP_PASSWORD: ${{ secrets.ftp_pwd }}
-          REMOTE_DIR : /htdocs/
-          ARGS: --delete --verbose --exclude-glob=.git*/** --exclude-glob=.git**
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: ${{ secrets.ftp_server }}
+          username: ${{ secrets.ftp_user }}
+          password: ${{ secrets.ftp_pwd }}
+          server-dir : /htdocs/
+          exclude: .git*
+            - .git*/**
+            -  **/.git*/**
+          log-level: verbose
+          dangerous-clean-slate: true
