@@ -3,7 +3,7 @@ name: Deploy on TargetServer
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
 
 jobs:
   FTP-Deploy-Action:
