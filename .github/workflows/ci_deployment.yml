@@ -10,16 +10,18 @@ jobs:
       name: FTP-Deploy-Action
       runs-on: ubuntu-latest
       steps:
-      - uses: actions/checkout@master
-      - name: FTP-Deploy-Action
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
-        with:
-          server: ${{ secrets.ftp_server }}
-          username: ${{ secrets.ftp_user }}
-          password: ${{ secrets.ftp_pwd }}
-          server-dir : /htdocs/
-          exclude: .git*
-            - .git*/**
-            -  **/.git*/**
-          log-level: verbose
-          dangerous-clean-slate: true
+        - name: checkout web content
+          uses: actions/checkout@master
+
+        - name: FTP-Deploy-Action
+          uses: SamKirkland/FTP-Deploy-Action@4.3.0
+          with:
+            server: ${{ secrets.ftp_server }}
+            username: ${{ secrets.ftp_user }}
+            password: ${{ secrets.ftp_pwd }}
+            server-dir : /htdocs/
+            exclude: .git*
+              - .git*/**
+              -  **/.git*/**
+            log-level: standard
+            dangerous-clean-slate: true
