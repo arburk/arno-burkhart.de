@@ -20,8 +20,11 @@ jobs:
             username: ${{ secrets.ftp_user }}
             password: ${{ secrets.ftp_pwd }}
             server-dir : /htdocs/
-            exclude: .git*
-              - .git*/**
-              -  **/.git*/**
+            exclude: |
+              .git*
+              .git*/**
+              **/.git*
+              **/.git*/**
+              **/node_modules/**
             log-level: standard
             dangerous-clean-slate: true
